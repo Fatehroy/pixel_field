@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_field/core/extensions/extensions.dart';
 
-class CollectionDetailsPage extends StatelessWidget {
-  static const String path = "/collection-details";
-  static const String name = "CollectionDetails";
-  const CollectionDetailsPage({super.key});
+class ScanPage extends StatelessWidget {
+  static const String path = "/scan";
+  static const String name = "Scan";
+  const ScanPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
           child: Text(
-        "Collection Details Page",
+        "Scan Page",
         style: context.textStyle.titleLarge!
             .copyWith(color: context.colorScheme.onSecondary, fontSize: 32),
       )),

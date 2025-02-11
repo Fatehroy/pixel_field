@@ -13,7 +13,6 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
         alignment: Alignment.bottomCenter,
         decoration: BoxDecoration(
@@ -62,7 +61,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 32.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

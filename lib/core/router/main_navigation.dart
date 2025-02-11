@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pixel_field/features/collection_details/pages/collection_details_page.dart';
+import 'package:pixel_field/core/extensions/extensions.dart';
+import 'package:pixel_field/features/scan/pages/scan_page.dart';
+import 'package:pixel_field/features/settings/pages/settings_page.dart';
+import 'package:pixel_field/features/shop/pages/shop_page.dart';
 
 import '../../features/collection/pages/collection_page.dart';
 import '../constants/app_assets.dart';
@@ -15,9 +18,9 @@ class MainNavigationPage extends StatefulWidget {
 }
 
 class MainNavigationPageState extends State<MainNavigationPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
-  final PageController _pageController = PageController();
+  final PageController _pageController = PageController(initialPage: 1);
 
   void _onItemTapped(int index) {
     if (_selectedIndex != index) {
@@ -39,18 +42,49 @@ class MainNavigationPageState extends State<MainNavigationPage> {
           });
         },
         physics: const NeverScrollableScrollPhysics(),
-        children: const [CollectionPage(), CollectionDetailsPage()],
+        children: const [ScanPage(), CollectionPage(), ShopPage(), SettingsPage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: true,
+        selectedItemColor: context.colorScheme.onSecondary,
+        unselectedItemColor: context.colorScheme.onSecondary.withValues(alpha: 0.5),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: SvgIcon(assetName: AppAssets.collection),
+            icon: SvgIcon(
+              assetName: AppAssets.scan,
+              color: _selectedIndex == 0
+                  ? context.colorScheme.onSecondary
+                  : context.colorScheme.onSecondary.withValues(alpha: 0.5),
+            ),
+            label: 'Scan',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgIcon(
+              assetName: AppAssets.collection,
+              color: _selectedIndex == 1
+                  ? context.colorScheme.onSecondary
+                  : context.colorScheme.onSecondary.withValues(alpha: 0.5),
+            ),
             label: 'Collection',
           ),
           BottomNavigationBarItem(
-            icon: SvgIcon(assetName: AppAssets.settings),
+            icon: SvgIcon(
+              assetName: AppAssets.eyeOpened,
+              color: _selectedIndex == 2
+                  ? context.colorScheme.onSecondary
+                  : context.colorScheme.onSecondary.withValues(alpha: 0.5),
+            ),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgIcon(
+              assetName: AppAssets.settings,
+              color: _selectedIndex == 3
+                  ? context.colorScheme.onSecondary
+                  : context.colorScheme.onSecondary.withValues(alpha: 0.5),
+            ),
             label: 'Settings',
           ),
         ],

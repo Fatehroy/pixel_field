@@ -10,4 +10,5 @@ class AppAssets {
 
   static const String background = "./assets/images/background.png";
   static const String logo = "./assets/logo/logo.png";
+  static const String bmw = "./assets/images/bmw.png";
 }
