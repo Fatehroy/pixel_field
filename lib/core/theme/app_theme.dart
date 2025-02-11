@@ -16,6 +16,11 @@ class GlobalThemData {
       textTheme: appTextTheme,
 
       //
+      // inputDecorationTheme: InputDecorationTheme(
+      //   fillColor: Colors.transparent,
+      //   border: Border.n()
+      // ),
+      //
       appBarTheme: AppBarTheme(
         elevation: 0.0,
         surfaceTintColor: Colors.transparent,
@@ -28,7 +33,7 @@ class GlobalThemData {
       //
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          backgroundColor: colorScheme.surface,
+          backgroundColor: Colors.transparent,
           foregroundColor: colorScheme.primary,
           iconColor: colorScheme.onPrimary,
           elevation: 0,
@@ -37,7 +42,7 @@ class GlobalThemData {
             borderRadius: BorderRadius.circular(12),
           ),
           textStyle: appTextTheme.bodyLarge!
-              .copyWith(color: colorScheme.onPrimary, fontWeight: FontWeight.bold),
+              .copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold),
         ),
       ),
 
@@ -65,7 +70,7 @@ class GlobalThemData {
           foregroundColor: colorScheme.onPrimary,
           iconColor: colorScheme.onPrimary,
           elevation: 0,
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
