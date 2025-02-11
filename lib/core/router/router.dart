@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:pixel_field/features/collection/model/car_model.dart';
 import 'package:pixel_field/features/settings/pages/settings_page.dart';
 import 'package:pixel_field/features/sign_in/pages/sign_in_page.dart';
 import 'package:pixel_field/features/welcome/pages/welcome_page.dart';
@@ -37,7 +38,13 @@ class AppRouter {
       GoRoute(
         path: CollectionDetailsPage.path,
         name: CollectionDetailsPage.name,
-        builder: (context, state) => CollectionDetailsPage(),
+        builder: (context, state) {
+          final data = state.extra as Map<String, dynamic>;
+
+          final carProduct = data['carProduct'] as CarProduct;
+
+          return CollectionDetailsPage(carProduct: carProduct);
+        },
       ),
       GoRoute(
         path: ScanPage.path,
