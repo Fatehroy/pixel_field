@@ -5,7 +5,7 @@ class CarProduct {
   final String make;
   final String model;
   final int year;
-  final double price;
+
   final String imageUrl;
   final int stockCount;
   final List<Specification> specifications;
@@ -17,7 +17,6 @@ class CarProduct {
     required this.make,
     required this.model,
     required this.year,
-    required this.price,
     required this.imageUrl,
     required this.stockCount,
     required this.specifications,
@@ -53,7 +52,6 @@ CarProduct bmwM2 = CarProduct(
   make: 'BMW',
   model: 'M2',
   year: 2017,
-  price: 147500,
   imageUrl: AppAssets.bmw,
   stockCount: 1,
   specifications: [

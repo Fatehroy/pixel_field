@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pixel_field/core/di/di.dart';
 import 'package:pixel_field/core/extensions/extensions.dart';
+import 'package:pixel_field/features/collection_details/cubit/collection_details_cubit.dart';
+import 'package:pixel_field/features/collection_details/cubit/collection_details_state.dart';
 import 'package:pixel_field/features/collection_details/widgets/car_details_section.dart';
 
 import '../../../core/constants/app_assets.dart';
@@ -27,6 +31,7 @@ class _CollectionDetailsPageState extends State<CollectionDetailsPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    sl<CollectionDetailsCubit>().fetchCollectionDetails(widget.carProduct.id);
   }
 
   @override
@@ -66,20 +71,31 @@ class _CollectionDetailsPageState extends State<CollectionDetailsPage>
             ),
           ),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: MediaQuery.paddingOf(context).top + 44.0),
-              CarImage(imageUrl: widget.carProduct.imageUrl),
-              CarDetailsSection(carProduct: widget.carProduct),
-              AddToCollectionButton(
-                onPressed: () {
-                  // Handle add to collection logic here
-                },
+        child:
+            BlocBuilder<CollectionDetailsCubit, CollectionDetailsState>(builder: (context, state) {
+          return state.when(
+            initial: () => SizedBox(),
+            loading: () => Center(child: CircularProgressIndicator()),
+            loaded: (carDetails) => SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: MediaQuery.paddingOf(context).top + 44.0),
+                  CarImage(imageUrl: carDetails.imageUrl),
+                  CarDetailsSection(carProduct: widget.carProduct),
+                  AddToCollectionButton(
+                    onPressed: () {
+                      // Handle add to collection logic here
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+            error: (message) => Center(
+                child: Text('Error: $message',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: context.colorScheme.onSecondary))),
+          );
+        }),
       ),
     );
   }

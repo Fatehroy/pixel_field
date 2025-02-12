@@ -39,6 +39,10 @@ dependencies:
   intl: ^0.20.2
   flutter_svg: ^2.0.17
   autoscale_tabbarview: ^1.0.2
+  bloc: ^9.0.0
+  flutter_bloc: ^9.0.0
+  freezed_annotation: ^2.4.4
+
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +54,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
+  freezed: ^2.5.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -67,6 +73,7 @@ flutter:
     - assets/logo/
     - assets/icons/
     - assets/images/
+    - assets/data/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

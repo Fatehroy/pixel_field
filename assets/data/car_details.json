@@ -1,0 +1,40 @@
+[
+    {
+        "id": "2",
+        "make": "BMW",
+        "model": "M2",
+        "year": 2017,
+        "imageUrl": "assets/images/bmw.png",
+        "stockCount": 1,
+        "specifications": [
+            {
+                "title": "Engine",
+                "value": "3.0L Twin-Turbo Inline-6"
+            },
+            {
+                "title": "Horsepower",
+                "value": "365 HP"
+            }
+        ],
+        "performanceAndFeatures": [
+            {
+                "title": "0-60 mph",
+                "value": "4.2 seconds"
+            },
+            {
+                "title": "Top Speed",
+                "value": "155 mph"
+            }
+        ],
+        "historyAndLegacy": [
+            {
+                "title": "Model Evolution",
+                "description": "The M2 debuted in 2016."
+            },
+            {
+                "title": "Special Editions",
+                "description": "M2 Competition (2018), M2 CS (2020)"
+            }
+        ]
+    }
+]
