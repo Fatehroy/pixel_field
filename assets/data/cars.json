@@ -6,5 +6,29 @@
         "year": 2017,
         "imageUrl": "assets/images/bmw.png",
         "stockCount": 1
+    },
+    {
+        "id": "2",
+        "make": "BMW",
+        "model": "M2",
+        "year": 2017,
+        "imageUrl": "assets/images/bmw.png",
+        "stockCount": 1
+    },
+    {
+        "id": "2",
+        "make": "BMW",
+        "model": "M2",
+        "year": 2017,
+        "imageUrl": "assets/images/bmw.png",
+        "stockCount": 1
+    },
+    {
+        "id": "2",
+        "make": "BMW",
+        "model": "M2",
+        "year": 2017,
+        "imageUrl": "assets/images/bmw.png",
+        "stockCount": 1
     }
 ]

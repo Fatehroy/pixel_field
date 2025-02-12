@@ -42,32 +42,35 @@ class _CollectionPageState extends State<CollectionPage> {
           )
         ],
       ),
-      body: BlocBuilder<CollectionCubit, CollectionState>(builder: (context, state) {
-        return state.when(
-          initial: () => SizedBox(),
-          loading: () => Center(child: CircularProgressIndicator()),
-          loaded: (cars) => Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-                childAspectRatio: 0.9,
+      body: RefreshIndicator(
+        onRefresh: () => sl<CollectionCubit>().fetchCars(),
+        child: BlocBuilder<CollectionCubit, CollectionState>(builder: (context, state) {
+          return state.when(
+            initial: () => SizedBox(),
+            loading: () => Center(child: CircularProgressIndicator()),
+            loaded: (cars) => Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 4,
+                  mainAxisSpacing: 4,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: cars.length,
+                itemBuilder: (context, index) {
+                  return CarCard(car: cars[index]);
+                },
               ),
-              itemCount: cars.length,
-              itemBuilder: (context, index) {
-                return CarCard(car: cars[index]);
-              },
             ),
-          ),
-          error: (message) => Center(
-            child: Text('Error: $message',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: context.colorScheme.onSecondary)),
-          ),
-        );
-      }),
+            error: (message) => Center(
+              child: Text('Error: $message',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: context.colorScheme.onSecondary)),
+            ),
+          );
+        }),
+      ),
     );
   }
 }

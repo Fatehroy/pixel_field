@@ -10,6 +10,7 @@ class CollectionRepository {
       final String jsonString = await rootBundle.loadString(_jsonPath);
       await Future.delayed(Durations.long2);
       final List<CarModel> cars = CarModel.fromJsonList(jsonString);
+      rootBundle.clear();
       return cars;
     } catch (e) {
       throw Exception('Failed to load car data: $e');
