@@ -7,17 +7,7 @@ import 'package:pixel_field/features/collection_details/pages/collection_details
 import '../../../core/widgets/svg_icon.dart';
 import '../model/car_model.dart';
 
-final List<CarProduct> cars = [
-  CarProduct(
-    id: '2',
-    make: 'BMW',
-    model: 'M2',
-    year: 2017,
-    price: 147500,
-    imageUrl: AppAssets.bmw,
-    description: '(1/5)',
-  ),
-];
+final List<CarProduct> cars = [bmwM2];
 
 class CollectionPage extends StatelessWidget {
   static const String path = "/collection";
@@ -114,18 +104,16 @@ class CarProductCard extends StatelessWidget {
                       style: context.textStyle.labelMedium!
                           .copyWith(color: context.colorScheme.onSecondary),
                     ),
-                    if (car.description != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        car.description!,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                    const SizedBox(height: 4),
+                    Text(
+                      "in stock: ${car.stockCount}",
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
                       ),
-                    ],
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ],
                 ),
               ),
