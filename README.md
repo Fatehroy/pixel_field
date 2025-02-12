@@ -1,16 +1,15 @@
-# pixel_field
+# Pixel Field 
 
-A new Flutter project.
+A modern Flutter application built with cutting-edge architecture and best practices.
 
-## Getting Started
+## ✨ Features
 
-This project is a starting point for a Flutter application.
+- **Clean Architecture** - Proper separation of concerns
+- **State Management** - BLoC/Cubit
+- **Navigation** - GoRouter for declarative routing
+- **Dependency Injection** - GetIt service locator
+- **Network Awareness** - Connectivity status monitoring
+- **Local Cache** - SharedPreferences integration
+- **Responsive UI** - Adaptive layouts with SVG support
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
