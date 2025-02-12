@@ -71,7 +71,7 @@ class MainNavigationPageState extends State<MainNavigationPage> {
           ),
           BottomNavigationBarItem(
             icon: SvgIcon(
-              assetName: AppAssets.eyeOpened,
+              assetName: AppAssets.car,
               color: _selectedIndex == 2
                   ? context.colorScheme.onSecondary
                   : context.colorScheme.onSecondary.withValues(alpha: 0.5),

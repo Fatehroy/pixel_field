@@ -8,6 +8,8 @@ class AppAssets {
   static const String eyeOpened = "./assets/icons/eye_open.svg";
   static const String eyeClosed = "./assets/icons/eye_closed.svg";
 
+  static const String car = "./assets/icons/car.svg";
+
   static const String background = "./assets/images/background.png";
   static const String logo = "./assets/logo/logo.png";
   static const String bmw = "./assets/images/bmw.png";

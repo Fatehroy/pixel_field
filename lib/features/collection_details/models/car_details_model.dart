@@ -22,7 +22,6 @@ class CarDetailsModel {
   });
 
   factory CarDetailsModel.fromJson(Map<String, dynamic> json) {
-    print(json);
     return CarDetailsModel(
       id: json['id'],
       make: json['make'],

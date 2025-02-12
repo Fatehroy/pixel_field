@@ -11,7 +11,6 @@ class CarImage extends StatelessWidget {
       child: Container(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).width,
-        // height: 120,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(imageUrl),

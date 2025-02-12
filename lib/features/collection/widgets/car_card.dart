@@ -23,7 +23,6 @@ class CarCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Car Image
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -38,8 +37,6 @@ class CarCard extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Car Details
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),

@@ -14,6 +14,30 @@
             {
                 "title": "Horsepower",
                 "value": "365 HP"
+            },
+            {
+                "title": "Torque",
+                "value": "369 lb-ft"
+            },
+            {
+                "title": "Transmission",
+                "value": "6-speed manual / 7-speed dual-clutch automatic"
+            },
+            {
+                "title": "Drivetrain",
+                "value": "Rear-Wheel Drive (RWD)"
+            },
+            {
+                "title": "Fuel Economy",
+                "value": "18 MPG city / 26 MPG highway"
+            },
+            {
+                "title": "Weight",
+                "value": "3,450 lbs"
+            },
+            {
+                "title": "Wheelbase",
+                "value": "106.0 inches"
             }
         ],
         "performanceAndFeatures": [
@@ -23,17 +47,45 @@
             },
             {
                 "title": "Top Speed",
-                "value": "155 mph"
+                "value": "155 mph (electronically limited)"
+            },
+            {
+                "title": "Braking",
+                "value": "70-0 mph in 153 feet"
+            },
+            {
+                "title": "Handling",
+                "value": "Adaptive M Suspension with precise steering response"
+            },
+            {
+                "title": "Tires",
+                "value": "Michelin Pilot Super Sport"
+            },
+            {
+                "title": "Technology",
+                "value": "iDrive infotainment system with navigation"
+            },
+            {
+                "title": "Interior",
+                "value": "M Sport seats with Dakota leather"
             }
         ],
         "historyAndLegacy": [
             {
                 "title": "Model Evolution",
-                "description": "The M2 debuted in 2016."
+                "description": "The M2 debuted in 2016 as the spiritual successor to the 1M Coupe, offering compact high-performance dynamics."
             },
             {
                 "title": "Special Editions",
-                "description": "M2 Competition (2018), M2 CS (2020)"
+                "description": "M2 Competition (2018) with S55 engine from M3/M4, and M2 CS (2020) with increased performance."
+            },
+            {
+                "title": "Racing Pedigree",
+                "description": "The M2 has been used in various motorsport events, including the BMW M2 CS Racing model."
+            },
+            {
+                "title": "Market Reception",
+                "description": "Praised for its balanced chassis, engaging driving experience, and affordability compared to larger M models."
             }
         ]
     }

@@ -33,9 +33,7 @@ class WelcomeSection extends StatelessWidget {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle scan bottle action
-                  },
+                  onPressed: () => context.push(SignInPage.path),
                   child: Text(
                     'Scan bottle',
                     style: context.textStyle.labelLarge,
@@ -55,9 +53,7 @@ class WelcomeSection extends StatelessWidget {
               ),
               SizedBox(width: 12),
               TextButton(
-                onPressed: () {
-                  context.push(SignInPage.path);
-                },
+                onPressed: () => context.push(SignInPage.path),
                 child: const Text(
                   'Sign in first',
                 ),

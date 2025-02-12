@@ -24,7 +24,6 @@ class CollectionDetailsRepository {
         throw Exception('Failed to load car details: $e');
       }
     } else {
-      print("-----> fetched from cache");
       final String? cachedData = prefs.getString(_cacheKey);
       if (cachedData != null) {
         return _extractCarDetails(cachedData, carId);

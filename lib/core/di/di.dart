@@ -12,6 +12,7 @@ Future<void> init() async {
   // Router
   sl.registerLazySingleton(() => AppRouter());
 
+  // Repos
   sl.registerLazySingleton(() => CollectionDetailsRepository());
   sl.registerLazySingleton(() => CollectionRepository());
 

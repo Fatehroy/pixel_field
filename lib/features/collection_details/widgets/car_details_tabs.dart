@@ -4,7 +4,7 @@ import 'package:pixel_field/core/extensions/extensions.dart';
 import 'package:pixel_field/features/collection_details/widgets/timeline.dart';
 
 import '../models/car_details_model.dart';
-import 'car_details_section.dart';
+
 import 'timeline_item.dart';
 
 class CarDetailsSectionTabs extends StatefulWidget {
@@ -97,4 +97,43 @@ class SpecificationsTab extends StatelessWidget {
           specifications.map((spec) => DetailRow(label: spec.title, value: spec.value)).toList(),
     );
   }
+}
+
+class DetailRow extends StatelessWidget {
+  const DetailRow({super.key, required this.label, required this.value});
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: _verticalPadding),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(
+            child: Text(label,
+                maxLines: 2,
+                textAlign: TextAlign.left,
+                overflow: TextOverflow.ellipsis,
+                style: context.textStyle.titleMedium
+                    ?.copyWith(color: context.colorScheme.onSecondary)),
+          ),
+          SizedBox(width: 24.0),
+          Expanded(
+            child: Text(
+              value,
+              style: context.textStyle.labelMedium?.copyWith(color: Colors.grey),
+              maxLines: 2,
+              textAlign: TextAlign.right,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  static const double _verticalPadding = 8.0;
 }

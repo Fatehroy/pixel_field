@@ -9,11 +9,9 @@ class CollectionDetailsCubit extends Cubit<CollectionDetailsState> {
 
   Future<void> fetchCollectionDetails(String carId) async {
     try {
-      print("Fetching");
       emit(const CollectionDetailsState.loading());
       final carDetails = await repository.fetchCarDetailsById(carId);
       emit(CollectionDetailsState.loaded(carDetails));
-      print("Fetching done");
     } catch (e) {
       emit(CollectionDetailsState.error(e.toString()));
     }

@@ -27,27 +27,3 @@ class CarDetailsSection extends StatelessWidget {
   static const double _padding = 16.0;
   static const double _margin = 16.0;
 }
-
-class DetailRow extends StatelessWidget {
-  const DetailRow({super.key, required this.label, required this.value});
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: _verticalPadding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label,
-              style:
-                  context.textStyle.titleMedium?.copyWith(color: context.colorScheme.onSecondary)),
-          Text(value, style: context.textStyle.labelMedium?.copyWith(color: Colors.grey)),
-        ],
-      ),
-    );
-  }
-
-  static const double _verticalPadding = 8.0;
-}

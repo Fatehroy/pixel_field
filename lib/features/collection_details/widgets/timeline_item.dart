@@ -12,42 +12,9 @@ class TimelineItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Column(
-        //   children: [
-        //     Container(
-        //       width: 16,
-        //       height: 16,
-        //       decoration: const BoxDecoration(
-        //         color: Colors.white,
-        //         shape: BoxShape.circle,
-        //       ),
-        //     ),
-        //     Container(
-        //       width: 2,
-        //       height: 60,
-        //       color: const Color(0xFFFFB400),
-        //     ),
-        //     Container(
-        //       width: 8,
-        //       height: 8,
-        //       decoration: const BoxDecoration(
-        //         color: Color(0xFFFFB400),
-        //         shape: BoxShape.circle,
-        //       ),
-        //     ),
-        //     Container(
-        //       width: 2,
-        //       height: 60,
-        //       color: const Color(0xFFFFB400),
-        //     ),
-        //   ],
-        // ),
-        // const SizedBox(width: 16),
         Expanded(
           child: Card(
             elevation: 0,
-            // color: const Color(0xFF19232D),z
-            // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(

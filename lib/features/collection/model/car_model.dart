@@ -28,7 +28,6 @@ class CarModel {
     );
   }
 
-  // To JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -40,13 +39,11 @@ class CarModel {
     };
   }
 
-  // From JSON List
   static List<CarModel> fromJsonList(String jsonString) {
     final List<dynamic> jsonData = json.decode(jsonString);
     return jsonData.map((car) => CarModel.fromJson(car)).toList();
   }
 
-  // To JSON List
   static String toJsonList(List<CarModel> cars) {
     final List<Map<String, dynamic>> jsonList = cars.map((car) => car.toJson()).toList();
     return json.encode(jsonList);

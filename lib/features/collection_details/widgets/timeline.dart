@@ -62,33 +62,26 @@ class CustomTimeline extends StatelessWidget {
         primary: primary,
         itemBuilder: (context, index) {
           final child = children[index];
-          final _indicators = indicators;
-
-          Widget? indicator;
-          if (_indicators != null) {
-            indicator = _indicators[index];
-          }
 
           final isFirst = index == 0;
 
           final timelineTile = <Widget>[
-            CustomPaint(
-              foregroundPainter: _TimelinePainter(
-                lineColor: context.colorScheme.primary,
-                indicatorColor: context.colorScheme.onSecondary,
-                indicatorSize: indicatorSize,
-                indicatorStyle: indicatorStyle,
-                isFirst: isFirst,
-                lineGap: lineGap,
-                strokeCap: strokeCap,
-                strokeWidth: strokeWidth,
-                style: style,
-                itemGap: itemGap,
-              ),
-              child: SizedBox(
-                height: double.infinity,
-                width: indicatorSize,
-                child: indicator,
+            SizedBox(
+              height: double.infinity,
+              width: indicatorSize,
+              child: CustomPaint(
+                foregroundPainter: _TimelinePainter(
+                  lineColor: context.colorScheme.primary,
+                  indicatorColor: context.colorScheme.onSecondary,
+                  indicatorSize: indicatorSize,
+                  indicatorStyle: indicatorStyle,
+                  isFirst: isFirst,
+                  lineGap: lineGap,
+                  strokeCap: strokeCap,
+                  strokeWidth: strokeWidth,
+                  style: style,
+                  itemGap: itemGap,
+                ),
               ),
             ),
             SizedBox(width: 4.0),
