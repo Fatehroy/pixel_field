@@ -71,31 +71,34 @@ class _CollectionDetailsPageState extends State<CollectionDetailsPage>
             ),
           ),
         ),
-        child:
-            BlocBuilder<CollectionDetailsCubit, CollectionDetailsState>(builder: (context, state) {
-          return state.when(
-            initial: () => SizedBox(),
-            loading: () => Center(child: CircularProgressIndicator()),
-            loaded: (carDetails) => SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.paddingOf(context).top + 44.0),
-                  CarImage(imageUrl: carDetails.imageUrl),
-                  CarDetailsSection(carProduct: carDetails),
-                  AddToCollectionButton(
-                    onPressed: () {
-                      // Handle add to collection logic here
-                    },
-                  ),
-                ],
+        child: RefreshIndicator(
+          onRefresh: () => sl<CollectionDetailsCubit>().fetchCollectionDetails(widget.carId),
+          child: BlocBuilder<CollectionDetailsCubit, CollectionDetailsState>(
+              builder: (context, state) {
+            return state.when(
+              initial: () => SizedBox(),
+              loading: () => Center(child: CircularProgressIndicator()),
+              loaded: (carDetails) => SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: MediaQuery.paddingOf(context).top + 44.0),
+                    CarImage(imageUrl: carDetails.imageUrl),
+                    CarDetailsSection(carProduct: carDetails),
+                    AddToCollectionButton(
+                      onPressed: () {
+                        // Handle add to collection logic here
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-            error: (message) => Center(
-                child: Text('Error: $message',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: context.colorScheme.onSecondary))),
-          );
-        }),
+              error: (message) => Center(
+                  child: Text('Error: $message',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: context.colorScheme.onSecondary))),
+            );
+          }),
+        ),
       ),
     );
   }
