@@ -1,32 +1,51 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/utils/network_checker.dart';
 import '../models/car_details_model.dart';
 
 class CollectionDetailsRepository {
   static const String _detailsJsonPath = 'assets/data/car_details.json';
+  static const String _cacheKey = 'cached_car_details';
 
   Future<CarDetailsModel> fetchCarDetailsById(String carId) async {
-    try {
-      // Load the JSON data from the file
-      final String jsonString = await rootBundle.loadString(_detailsJsonPath);
-      await Future.delayed(Durations.long2);
-      final List<dynamic> jsonData = json.decode(jsonString);
+    final bool isOnline = await hasInternetConnection();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      // Find the car with the matching carId
-      final carData = jsonData.firstWhere(
-        (car) => car['id'] == carId,
-        orElse: () => null,
-      );
+    if (isOnline) {
+      try {
+        final String jsonString = await rootBundle.loadString(_detailsJsonPath);
+        await Future.delayed(Duration(milliseconds: 500)); // Simulating API delay
 
-      if (carData == null) {
-        throw Exception('Car details not found for ID: $carId');
+        prefs.setString(_cacheKey, jsonString);
+
+        return _extractCarDetails(jsonString, carId);
+      } catch (e) {
+        throw Exception('Failed to load car details: $e');
+      }
+    } else {
+      print("-----> fetched from cache");
+      final String? cachedData = prefs.getString(_cacheKey);
+      if (cachedData != null) {
+        return _extractCarDetails(cachedData, carId);
       }
 
-      // Return the car details as a CarDetailsModel
-      return CarDetailsModel.fromJson(carData);
-    } catch (e) {
-      throw Exception('Failed to load car details: $e');
+      throw Exception('No internet connection and no cached data available.');
     }
+  }
+
+  CarDetailsModel _extractCarDetails(String jsonString, String carId) {
+    final List<dynamic> jsonData = json.decode(jsonString);
+
+    final carData = jsonData.firstWhere(
+      (car) => car['id'] == carId,
+      orElse: () => null,
+    );
+
+    if (carData == null) {
+      throw Exception('Car details not found for ID: $carId');
+    }
+
+    return CarDetailsModel.fromJson(carData);
   }
 }

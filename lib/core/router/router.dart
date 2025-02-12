@@ -1,8 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:pixel_field/features/collection/model/car_model.dart';
 import 'package:pixel_field/features/settings/pages/settings_page.dart';
 import 'package:pixel_field/features/sign_in/pages/sign_in_page.dart';
-import 'package:pixel_field/features/welcome/pages/welcome_page.dart';
+import 'package:pixel_field/features/spalsh_screen/pages/splash_screen.dart';
 import '../../features/collection/pages/collection_page.dart';
 import '../../features/collection_details/pages/collection_details_page.dart';
 import '../../features/scan/pages/scan_page.dart';
@@ -13,17 +12,17 @@ class AppRouter {
   GoRouter get router => _router;
 
   static final GoRouter _router = GoRouter(
-    initialLocation: WelcomePage.path,
+    initialLocation: SplashScreen.path,
     routes: [
+      GoRoute(
+        path: SplashScreen.path,
+        name: SplashScreen.name,
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: MainNavigationPage.path,
         name: MainNavigationPage.name,
         builder: (context, state) => const MainNavigationPage(),
-      ),
-      GoRoute(
-        path: WelcomePage.path,
-        name: WelcomePage.name,
-        builder: (context, state) => const WelcomePage(),
       ),
       GoRoute(
         path: SignInPage.path,
