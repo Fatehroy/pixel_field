@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/car_details_model.dart';
 
@@ -9,6 +10,7 @@ class CollectionDetailsRepository {
     try {
       // Load the JSON data from the file
       final String jsonString = await rootBundle.loadString(_detailsJsonPath);
+      await Future.delayed(Durations.long2);
       final List<dynamic> jsonData = json.decode(jsonString);
 
       // Find the car with the matching carId

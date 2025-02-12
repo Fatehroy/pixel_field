@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_field/core/extensions/extensions.dart';
+import 'package:pixel_field/features/collection_details/models/car_details_model.dart';
 import 'package:pixel_field/features/collection_details/widgets/car_details_tabs.dart';
 
-import '../../collection/model/car_model.dart';
 import 'header_section.dart';
 
 class CarDetailsSection extends StatelessWidget {
   const CarDetailsSection({super.key, required this.carProduct});
-  final CarProduct carProduct;
+  final CarDetailsModel carProduct;
 
   @override
   Widget build(BuildContext context) {

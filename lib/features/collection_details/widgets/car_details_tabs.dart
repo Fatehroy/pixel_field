@@ -4,12 +4,13 @@ import 'package:pixel_field/core/extensions/extensions.dart';
 import 'package:pixel_field/features/collection_details/widgets/timeline.dart';
 
 import '../../collection/model/car_model.dart';
+import '../models/car_details_model.dart';
 import 'car_details_section.dart';
 import 'timeline_item.dart';
 
 class CarDetailsSectionTabs extends StatefulWidget {
   const CarDetailsSectionTabs({super.key, required this.carProduct});
-  final CarProduct carProduct;
+  final CarDetailsModel carProduct;
 
   @override
   State<CarDetailsSectionTabs> createState() => _CarDetailsSectionTabsState();

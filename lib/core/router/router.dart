@@ -41,9 +41,9 @@ class AppRouter {
         builder: (context, state) {
           final data = state.extra as Map<String, dynamic>;
 
-          final carProduct = data['carProduct'] as CarProduct;
+          final carId = data['carId'];
 
-          return CollectionDetailsPage(carProduct: carProduct);
+          return CollectionDetailsPage(carId: carId);
         },
       ),
       GoRoute(

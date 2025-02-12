@@ -15,9 +15,9 @@ import '../widgets/car_image.dart';
 class CollectionDetailsPage extends StatefulWidget {
   static const String path = "/collection-details";
   static const String name = "CollectionDetails";
-  const CollectionDetailsPage({super.key, required this.carProduct});
+  const CollectionDetailsPage({super.key, required this.carId});
 
-  final CarProduct carProduct;
+  final String carId;
 
   @override
   State<CollectionDetailsPage> createState() => _CollectionDetailsPageState();
@@ -31,7 +31,7 @@ class _CollectionDetailsPageState extends State<CollectionDetailsPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    sl<CollectionDetailsCubit>().fetchCollectionDetails(widget.carProduct.id);
+    sl<CollectionDetailsCubit>().fetchCollectionDetails(widget.carId);
   }
 
   @override
@@ -81,7 +81,7 @@ class _CollectionDetailsPageState extends State<CollectionDetailsPage>
                 children: [
                   SizedBox(height: MediaQuery.paddingOf(context).top + 44.0),
                   CarImage(imageUrl: carDetails.imageUrl),
-                  CarDetailsSection(carProduct: widget.carProduct),
+                  CarDetailsSection(carProduct: carDetails),
                   AddToCollectionButton(
                     onPressed: () {
                       // Handle add to collection logic here

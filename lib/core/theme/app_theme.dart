@@ -14,12 +14,8 @@ class GlobalThemData {
       scaffoldBackgroundColor: colorScheme.surface,
       highlightColor: Colors.transparent,
       textTheme: appTextTheme,
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: colorScheme.onSecondary),
 
-      //
-      // inputDecorationTheme: InputDecorationTheme(
-      //   fillColor: Colors.transparent,
-      //   border: Border.n()
-      // ),
       //
       appBarTheme: AppBarTheme(
         elevation: 0.0,

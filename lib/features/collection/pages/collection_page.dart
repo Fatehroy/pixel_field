@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixel_field/core/constants/app_assets.dart';
 import 'package:pixel_field/core/extensions/extensions.dart';
-import 'package:pixel_field/features/collection_details/pages/collection_details_page.dart';
+import 'package:pixel_field/features/collection/cubit/collection_cubit.dart';
+import 'package:pixel_field/features/collection/cubit/collection_state.dart';
 
+import '../../../core/di/di.dart';
 import '../../../core/widgets/svg_icon.dart';
-import '../model/car_model.dart';
+import '../widgets/car_card.dart';
 
-final List<CarProduct> cars = [bmwM2];
-
-class CollectionPage extends StatelessWidget {
+class CollectionPage extends StatefulWidget {
   static const String path = "/collection";
   static const String name = "Collection";
   const CollectionPage({super.key});
+
+  @override
+  State<CollectionPage> createState() => _CollectionPageState();
+}
+
+class _CollectionPageState extends State<CollectionPage> {
+  @override
+  void initState() {
+    sl<CollectionCubit>().fetchCars();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,96 +42,32 @@ class CollectionPage extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 4,
-            mainAxisSpacing: 4,
-            childAspectRatio: 0.9,
+      body: BlocBuilder<CollectionCubit, CollectionState>(builder: (context, state) {
+        return state.when(
+          initial: () => SizedBox(),
+          loading: () => Center(child: CircularProgressIndicator()),
+          loaded: (cars) => Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 4,
+                mainAxisSpacing: 4,
+                childAspectRatio: 0.9,
+              ),
+              itemCount: cars.length,
+              itemBuilder: (context, index) {
+                return CarCard(car: cars[index]);
+              },
+            ),
           ),
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return CarProductCard(car: cars[0]);
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class CarProductCard extends StatelessWidget {
-  final CarProduct car;
-
-  const CarProductCard({super.key, required this.car});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.push(CollectionDetailsPage.path, extra: {'carProduct': car}),
-      child: Card(
-        elevation: 0,
-        color: context.colorScheme.onSurface,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Car Image
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(car.imageUrl),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Car Details
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${car.make} ${car.model}',
-                      style: context.textStyle.titleLarge!
-                          .copyWith(color: context.colorScheme.onSecondary),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      car.year.toString(),
-                      style: context.textStyle.labelMedium!
-                          .copyWith(color: context.colorScheme.onSecondary),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      "in stock: ${car.stockCount}",
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+          error: (message) => Center(
+            child: Text('Error: $message',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: context.colorScheme.onSecondary)),
+          ),
+        );
+      }),
     );
   }
 }

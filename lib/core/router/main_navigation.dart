@@ -42,7 +42,7 @@ class MainNavigationPageState extends State<MainNavigationPage> {
           });
         },
         physics: const NeverScrollableScrollPhysics(),
-        children: const [ScanPage(), CollectionPage(), ShopPage(), SettingsPage()],
+        children: [ScanPage(), CollectionPage(), ShopPage(), SettingsPage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,

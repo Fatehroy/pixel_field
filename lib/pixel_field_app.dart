@@ -6,6 +6,7 @@ import 'package:pixel_field/features/collection_details/cubit/collection_details
 import 'core/di/di.dart';
 import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
+import 'features/collection/cubit/collection_cubit.dart';
 
 class PixelFieldApp extends StatelessWidget {
   const PixelFieldApp({super.key});
@@ -17,6 +18,7 @@ class PixelFieldApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => sl<CollectionDetailsCubit>()),
+        BlocProvider(create: (context) => sl<CollectionCubit>()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
