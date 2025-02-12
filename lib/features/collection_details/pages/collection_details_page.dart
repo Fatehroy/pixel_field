@@ -9,7 +9,6 @@ import 'package:pixel_field/features/collection_details/widgets/car_details_sect
 
 import '../../../core/constants/app_assets.dart';
 import '../../../core/widgets/svg_icon.dart';
-import '../../collection/model/car_model.dart';
 import '../widgets/car_image.dart';
 
 class CollectionDetailsPage extends StatefulWidget {
